@@ -1,0 +1,39 @@
+prototype(Litespeed.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:Component) {
+    @propTypes {
+        content = ${PropTypes.string}
+        cite = ${PropTypes.string}
+        function = ${PropTypes.string}
+        class = ${PropTypes.anyOf( PropTypes.string, PropTypes.arrayOf( PropTypes.string ) )}
+    }
+
+    @styleguide {
+        props {
+            content = Sitegeist.ChitChat:P
+            cite = Sitegeist.ChitChat:Line {
+                length = 50
+            }
+            function = Sitegeist.ChitChat:Line {
+                length = 50
+            }
+        }
+    }
+
+
+    @if.hasContent = ${this.content}
+
+    class = 'has-prose w-full prose'
+
+    renderer = afx`
+        <Litespeed.Presentation:Spacing tailwind={props.class} width padding waveSpacing>
+            <blockquote class="font-quote">
+                {props.content}
+                <footer @if={props.cite || props.function} class="font-main mt-6 text-base not-prose">
+                    <p>
+                        {props.cite}
+                        <span @if={props.function} class="opacity-60 block">{props.function}</span>
+                    </p>
+                </footer>
+            </blockquote>
+        </Litespeed.Presentation:Spacing>
+    `
+}

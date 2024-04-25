@@ -1,0 +1,22 @@
+prototype(Litespeed.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) {
+    content = Neos.Neos:Editable {
+        property = 'text'
+    }
+    cite = Neos.Neos:Editable {
+        property = 'cite'
+        block = false
+    }
+    function = Neos.Neos:Editable {
+        property = 'function'
+        block = false
+    }
+    image = ${q(node).property('image')}
+    alternativeText = ${q(node).property('alternativeText')}
+
+    theme = ${q(node).property('theme')}
+
+    renderer = afx`
+        <Litespeed.Blockquote:Presentation.Blockquote @if={!props.image} {...props}/>
+        <Litespeed.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props}/>
+    `
+}

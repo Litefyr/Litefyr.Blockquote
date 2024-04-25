@@ -1,0 +1,65 @@
+prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neos.Fusion:Component) {
+    @propTypes {
+        content = ${PropTypes.string}
+        cite = ${PropTypes.string}
+        function = ${PropTypes.string}
+    }
+
+    @styleguide {
+        props {
+            content = Sitegeist.ChitChat:P {
+                length = 500
+            }
+            cite = Sitegeist.ChitChat:Line {
+                length = 50
+            }
+            function = Sitegeist.ChitChat:Line {
+                length = 50
+            }
+            imageSource = Carbon.Image:Helper.ImageSource {
+                outputDummy = true
+            }
+            alternativeText = 'Alternativer Text'
+        }
+    }
+
+    @if.hasContent = ${this.content}
+
+    @private {
+        fallbackName = ${String.replace(props.cite, '<br>', ' ')}
+        alternativeText = ${props.alternativeText || (private.fallbackName ? Translation.translate('imageFromPerson', null, [private.fallbackName], 'Main', 'Litespeed.Presentation') : null)}
+        fileLoader = Carbon.FileLoader:Strategy.Attributes {
+            package = 'Litespeed.Blockquote'
+            css = 'Main.css'
+        }
+        theme = ${props.theme || 'main'}
+    }
+
+    renderer = afx`
+        <Litespeed.Presentation:Spacing {...private.fileLoader} class="-blockquote-with-image" tailwind="mt-20 clippath-on-top clippath-inside" width="full">
+            <div data-theme={private.theme} class="-blockquote-with-image__bg w-full h-full bg-theme-back col-start-1 col-span-3 row-start-2 row-span-2 lg:col-end-6 lg:row-start-2 lg:row-span-1" aria-hidden="true">
+                <Litespeed.Presentation:Atom.Clippath.Top theme={private.theme} class="translate-y-1" />
+            </div>
+            <Litespeed.Presentation:Atom.Image
+                figureAttributes.class="-blockquote-with-image__image w-full rounded-image aspect-[var(--round-image,10)/var(--round-image,6)] shadow-xl overflow-clip sm:max-w-3xl sm:aspect-[var(--round-image,16)/var(--round-image,7)] lg:aspect-auto lg:h-full"
+                class="object-cover w-full h-full lg:h-full lg:w-full"
+                {...props}
+                alternativeText={private.alternativeText}
+                content={null}
+            />
+            <blockquote data-theme={private.theme} class="-blockquote-with-image__text text-2xl font-bold text-theme-front my-12 self-center font-quote">
+                <Litespeed.Theme:Component.Icon
+                    styleAndIcon={Configuration.setting('Litespeed.Presentation.icons.blockquote')}
+                    attributes.class="fill-theme-front opacity-25 mb-6 size-12 md:size-16 -translate-x-8"
+                />
+                {props.content}
+                <footer class="mt-6 text-base font-main">
+                    <p>{props.cite}</p>
+                    <p class="text-theme-front opacity-80">{props.function}</p>
+                </footer>
+
+            </blockquote>
+            <Litespeed.Presentation:Atom.Clippath.Bottom theme={private.theme} />
+        </Litespeed.Presentation:Spacing>
+    `
+}

@@ -1,0 +1,60 @@
+'Litespeed.Blockquote:Content':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Carbon.Image:AlternativeText': true
+    'Carbon.Image:Image': true
+    'Litespeed.Theme:Mixin.ThemeSelector': true
+  label: "${Neos.Node.labelForNode(node).properties('cite', 'alternativeText', 'text', 'function')}"
+  search:
+    fulltext:
+      enable: true
+  ui:
+    label: i18n
+    icon: quote-left
+    position: 500
+  properties:
+    theme:
+      defaultValue: 'main'
+      ui:
+        inspector:
+          position: end
+          group: image
+          hidden: 'ClientEval:node.properties.image ? false : true'
+    alternativeText:
+      ui:
+        inspector:
+          editorOptions:
+            # TODO How we can handle the translation of the placeholder?
+            placeholder: "ClientEval:node.properties.cite?'Bild von ' + node.properties.cite.replaceAll('<br>', ' '):''"
+    text:
+      options:
+        preset: 'text.autoparagraph'
+      ui:
+        inline:
+          editorOptions:
+            formatting:
+              blockquote: false
+              table: false
+              h2: false
+              h3: false
+              h4: false
+              ul: false
+              ol: false
+    cite:
+      type: string
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: i18n
+    function:
+      type: string
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: i18n

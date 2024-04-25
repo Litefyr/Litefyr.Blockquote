@@ -1,0 +1,20 @@
+{
+    "name": "litespeed/blockquote",
+    "description": "A blockquote node type for Litespeed",
+    "type": "neos-litespeed",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "litespeed/theme": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Litespeed\\Blockquote\\": "Classes"
+        }
+    },
+    "keywords": [
+        "flow",
+        "neos",
+        "litespeed",
+        "nodetype"
+    ]
+}
