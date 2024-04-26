@@ -1,4 +1,4 @@
-# Block quote content elmement for Litespeed
+# Block quote content element for Litespeed
 
 [Demo](https://elements.litespeed.io/blockquote)
 
