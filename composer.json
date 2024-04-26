@@ -4,7 +4,7 @@
     "type": "neos-litespeed",
     "license": "GPL-3.0-or-later",
     "require": {
-        "litespeed/theme": "self.version"
+        "litespeed/integration": "self.version"
     },
     "autoload": {
         "psr-4": {

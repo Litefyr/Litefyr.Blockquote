@@ -3,7 +3,7 @@
     'Neos.Neos:Content': true
     'Carbon.Image:AlternativeText': true
     'Carbon.Image:Image': true
-    'Litespeed.Theme:Mixin.ThemeSelector': true
+    'Litespeed.Integration:Mixin.ThemeSelector': true
   label: "${Neos.Node.labelForNode(node).properties('cite', 'alternativeText', 'text', 'function')}"
   search:
     fulltext:

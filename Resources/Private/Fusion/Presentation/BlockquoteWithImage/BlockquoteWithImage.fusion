@@ -48,7 +48,7 @@ prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neo
                 content={null}
             />
             <blockquote data-theme={private.theme} class="-blockquote-with-image__text text-2xl font-bold text-theme-front my-12 self-center font-quote">
-                <Litespeed.Theme:Component.Icon
+                <Litespeed.Presentation:Atom.Icon
                     styleAndIcon={Configuration.setting('Litespeed.Presentation.icons.blockquote')}
                     attributes.class="fill-theme-front opacity-25 mb-6 size-12 md:size-16 -translate-x-8"
                 />
