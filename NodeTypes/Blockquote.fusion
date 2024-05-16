@@ -1,4 +1,4 @@
-prototype(Litespeed.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) {
+prototype(Litefyr.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) {
     content = Neos.Neos:Editable {
         property = 'text'
     }
@@ -16,7 +16,7 @@ prototype(Litespeed.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) 
     theme = ${q(node).property('theme')}
 
     renderer = afx`
-        <Litespeed.Blockquote:Presentation.Blockquote @if={!props.image} {...props}/>
-        <Litespeed.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props}/>
+        <Litefyr.Blockquote:Presentation.Blockquote @if={!props.image} {...props}/>
+        <Litefyr.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props}/>
     `
 }

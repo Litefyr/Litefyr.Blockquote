@@ -2,11 +2,11 @@ Neos:
   Neos:
     fusion:
       autoInclude:
-        Litespeed.Blockquote: true
+        Litefyr.Blockquote: true
     userInterface:
       translation:
         autoInclude:
-          Litespeed.Blockquote:
+          Litefyr.Blockquote:
             - 'NodeTypes/*'
     Ui:
       frontendConfiguration:
@@ -16,17 +16,17 @@ Neos:
               'Blockquote':
                 documentation: Add a blockquote
                 snippet: |
-                  <Litespeed.Blockquote:Presentation.Blockquote
+                  <Litefyr.Blockquote:Presentation.Blockquote
                     cite="${1}"
                     function="${2}"
                     ${3:class="${4}"}
                   >
                     ${5}
-                  </Litespeed.Blockquote:Presentation.Blockquote>'
+                  </Litefyr.Blockquote:Presentation.Blockquote>'
               'Blockquote.Image':
                 documentation: Add a blockquote with image
                 snippet: |
-                  <Litespeed.Blockquote:Presentation.BlockquoteWithImage
+                  <Litefyr.Blockquote:Presentation.BlockquoteWithImage
                     image={asset[0]}
                     cite="${1}"
                     function="${2}"
@@ -34,4 +34,4 @@ Neos:
                     ${4:class="${5}"}
                   >
                     ${5}
-                  </Litespeed.Blockquote:Presentation.BlockquoteWithImage>
+                  </Litefyr.Blockquote:Presentation.BlockquoteWithImage>

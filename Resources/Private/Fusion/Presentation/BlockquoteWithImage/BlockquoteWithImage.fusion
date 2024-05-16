@@ -1,4 +1,4 @@
-prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neos.Fusion:Component) {
+prototype(Litefyr.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neos.Fusion:Component) {
     @propTypes {
         content = ${PropTypes.string}
         cite = ${PropTypes.string}
@@ -27,20 +27,20 @@ prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neo
 
     @private {
         fallbackName = ${String.replace(props.cite, '<br>', ' ')}
-        alternativeText = ${props.alternativeText || (private.fallbackName ? Translation.translate('imageFromPerson', null, [private.fallbackName], 'Main', 'Litespeed.Presentation') : null)}
+        alternativeText = ${props.alternativeText || (private.fallbackName ? Translation.translate('imageFromPerson', null, [private.fallbackName], 'Main', 'Litefyr.Presentation') : null)}
         fileLoader = Carbon.FileLoader:Strategy.Attributes {
-            package = 'Litespeed.Blockquote'
+            package = 'Litefyr.Blockquote'
             css = 'Main.css'
         }
         theme = ${props.theme || 'main'}
     }
 
     renderer = afx`
-        <Litespeed.Presentation:Spacing {...private.fileLoader} class="-blockquote-with-image" tailwind="mt-20 clippath-on-top clippath-inside" width="full">
+        <Litefyr.Presentation:Spacing {...private.fileLoader} class="-blockquote-with-image" tailwind="mt-20 clippath-on-top clippath-inside" width="full">
             <div data-theme={private.theme} class="-blockquote-with-image__bg w-full h-full bg-theme-back col-start-1 col-span-3 row-start-2 row-span-2 lg:col-end-6 lg:row-start-2 lg:row-span-1" aria-hidden="true">
-                <Litespeed.Presentation:Atom.Clippath.Top theme={private.theme} class="translate-y-1" />
+                <Litefyr.Presentation:Atom.Clippath.Top theme={private.theme} class="translate-y-1" />
             </div>
-            <Litespeed.Presentation:Atom.Image
+            <Litefyr.Presentation:Atom.Image
                 figureAttributes.class="-blockquote-with-image__image w-full rounded-image aspect-[var(--round-image,10)/var(--round-image,6)] shadow-xl overflow-clip sm:max-w-3xl sm:aspect-[var(--round-image,16)/var(--round-image,7)] lg:aspect-auto lg:h-full"
                 class="object-cover w-full h-full lg:h-full lg:w-full"
                 {...props}
@@ -48,8 +48,8 @@ prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neo
                 content={null}
             />
             <blockquote data-theme={private.theme} class="-blockquote-with-image__text text-2xl font-bold text-theme-front my-12 self-center font-quote">
-                <Litespeed.Presentation:Atom.Icon
-                    styleAndIcon={Configuration.setting('Litespeed.Presentation.icons.blockquote')}
+                <Litefyr.Presentation:Atom.Icon
+                    styleAndIcon={Configuration.setting('Litefyr.Presentation.icons.blockquote')}
                     attributes.class="fill-theme-front opacity-25 mb-6 size-12 md:size-16 -translate-x-8"
                 />
                 {props.content}
@@ -59,7 +59,7 @@ prototype(Litespeed.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neo
                 </footer>
 
             </blockquote>
-            <Litespeed.Presentation:Atom.Clippath.Bottom theme={private.theme} />
-        </Litespeed.Presentation:Spacing>
+            <Litefyr.Presentation:Atom.Clippath.Bottom theme={private.theme} />
+        </Litefyr.Presentation:Spacing>
     `
 }

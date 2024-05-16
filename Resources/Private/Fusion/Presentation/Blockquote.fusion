@@ -1,4 +1,4 @@
-prototype(Litespeed.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:Component) {
+prototype(Litefyr.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:Component) {
     @propTypes {
         content = ${PropTypes.string}
         cite = ${PropTypes.string}
@@ -24,7 +24,7 @@ prototype(Litespeed.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:
     class = 'has-prose w-full prose'
 
     renderer = afx`
-        <Litespeed.Presentation:Spacing tailwind={props.class} width padding waveSpacing>
+        <Litefyr.Presentation:Spacing tailwind={props.class} width padding waveSpacing>
             <blockquote class="font-quote">
                 {props.content}
                 <footer @if={props.cite || props.function} class="font-main mt-6 text-base not-prose">
@@ -34,6 +34,6 @@ prototype(Litespeed.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:
                     </p>
                 </footer>
             </blockquote>
-        </Litespeed.Presentation:Spacing>
+        </Litefyr.Presentation:Spacing>
     `
 }
