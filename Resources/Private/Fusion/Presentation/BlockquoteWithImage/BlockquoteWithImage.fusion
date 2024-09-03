@@ -36,7 +36,7 @@ prototype(Litefyr.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neos.
     }
 
     renderer = afx`
-        <Litefyr.Presentation:Spacing {...private.fileLoader} class="-blockquote-with-image" tailwind="mt-20 clippath-on-top clippath-inside" width="full">
+        <Litefyr.Presentation:Spacing {...private.fileLoader} class={[Presentation.cssClass("blockquote-with-image"), "-blockquote-with-image"]} tailwind="mt-20 clippath-on-top clippath-inside" width="full">
             <div data-theme={private.theme} class="-blockquote-with-image__bg w-full h-full bg-theme-back col-start-1 col-span-3 row-start-2 row-span-2 lg:col-end-6 lg:row-start-2 lg:row-span-1" aria-hidden="true">
                 <Litefyr.Presentation:Atom.Clippath.Top theme={private.theme} class="translate-y-1" />
             </div>
