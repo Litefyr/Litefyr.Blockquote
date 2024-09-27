@@ -11,6 +11,9 @@
             <trans-unit id="properties.function.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Function</source>
             </trans-unit>
+            <trans-unit id="properties.themeShadowBlockquoteWithImage" xml:space="preserve">
+                <source>Quote with image</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

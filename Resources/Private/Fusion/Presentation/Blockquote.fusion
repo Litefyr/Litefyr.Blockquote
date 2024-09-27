@@ -24,7 +24,12 @@ prototype(Litefyr.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:Co
     class = 'has-prose w-full prose'
 
     renderer = afx`
-        <Litefyr.Presentation:Spacing tailwind={props.class} width padding waveSpacing>
+        <Litefyr.Presentation:Spacing
+            tailwind={props.class}
+            width padding waveSpacing
+            animationText={props.animationText}
+            data-animation-text-selector={props.animationText ? "blockquote" : null}
+        >
             <blockquote class={[Presentation.cssClass("blockquote"), "font-quote"]}>
                 {props.content}
                 <footer @if={props.cite || props.function} class="font-main mt-6 text-base not-prose">

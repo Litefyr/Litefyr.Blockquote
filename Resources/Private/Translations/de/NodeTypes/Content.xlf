@@ -14,6 +14,10 @@
                 <source>Function</source>
                 <target>Funktion</target>
             </trans-unit>
+            <trans-unit id="properties.themeShadowBlockquoteWithImage" xml:space="preserve">
+                <source>Quote with image</source>
+                <target>Zitat mit Bild</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -4,6 +4,7 @@
     'Carbon.Image:AlternativeText': true
     'Carbon.Image:Image': true
     'Litefyr.Integration:Mixin.ThemeSelector': true
+    'Litefyr.Animations:Mixin.TextWithOptionalImage': true
   label: "${Neos.Node.labelForNode(node).properties('cite', 'alternativeText', 'text', 'function')}"
   search:
     fulltext:
@@ -20,6 +21,9 @@
           position: end
           group: image
           hidden: 'ClientEval:node.properties.image ? false : true'
+    image:
+      ui:
+        reloadPageIfChanged: true
     alternativeText:
       ui:
         inspector:

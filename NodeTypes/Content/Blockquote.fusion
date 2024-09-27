@@ -15,6 +15,9 @@ prototype(Litefyr.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) {
 
     theme = ${q(node).property('theme')}
 
+    animationText = Litefyr.Animations:Helper.Text
+    animationMedia = Litefyr.Animations:Helper.Media
+
     renderer = afx`
         <Litefyr.Blockquote:Presentation.Blockquote @if={!props.image} {...props}/>
         <Litefyr.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props}/>

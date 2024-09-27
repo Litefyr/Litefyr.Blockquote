@@ -1,0 +1,11 @@
+'Litefyr.Style:Mixin.Extensions':
+  abstract: true
+  properties:
+    themeShadowBlockquoteWithImage:
+      defaultValue: xl
+      options:
+        preset: 'theme.shadow'
+      ui:
+        label: 'Litefyr.Blockquote:NodeTypes.Content:properties.themeShadowBlockquoteWithImage'
+        inspector:
+          position: 800

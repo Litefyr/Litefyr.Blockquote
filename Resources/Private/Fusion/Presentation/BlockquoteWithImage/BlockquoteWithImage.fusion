@@ -36,28 +36,37 @@ prototype(Litefyr.Blockquote:Presentation.BlockquoteWithImage) < prototype(Neos.
     }
 
     renderer = afx`
-        <Litefyr.Presentation:Spacing {...private.fileLoader} class={[Presentation.cssClass("blockquote-with-image"), "-blockquote-with-image"]} tailwind="mt-20 clippath-on-top clippath-inside" width="full">
+        <Litefyr.Presentation:Spacing
+            {...private.fileLoader}
+            class={[Presentation.cssClass("blockquote-with-image"), "-blockquote-with-image"]}
+            tailwind="mt-20 clippath-on-top clippath-inside"
+            width="full"
+            animationText={props.animationText}
+            data-animation-text-selector={props.animationText ? "p" : null}
+        >
             <div data-theme={private.theme} class="-blockquote-with-image__bg w-full h-full bg-theme-back col-start-1 col-span-3 row-start-2 row-span-2 lg:col-end-6 lg:row-start-2 lg:row-span-1" aria-hidden="true">
                 <Litefyr.Presentation:Atom.Clippath.Top theme={private.theme} class="translate-y-1" />
             </div>
             <Litefyr.Presentation:Atom.Image
-                figureAttributes.class="-blockquote-with-image__image w-full rounded-image aspect-[var(--round-image,10)/var(--round-image,6)] shadow-xl overflow-clip sm:max-w-3xl sm:aspect-[var(--round-image,16)/var(--round-image,7)] lg:aspect-auto lg:h-full"
+                figureAttributes.data-animation-media={props.animationMedia}
+                figureAttributes.class="-blockquote-with-image__image w-full rounded-image aspect-[var(--round-image,10)/var(--round-image,6)] shadow-blockquote-with-image overflow-clip sm:max-w-3xl sm:aspect-[var(--round-image,16)/var(--round-image,7)] lg:aspect-auto lg:h-full"
                 class="object-cover w-full h-full lg:h-full lg:w-full"
                 {...props}
                 alternativeText={private.alternativeText}
                 content={null}
             />
             <blockquote data-theme={private.theme} class="-blockquote-with-image__text text-2xl font-bold text-theme-front my-12 self-center font-quote">
-                <Litefyr.Presentation:Atom.Icon
-                    styleAndIcon={Configuration.setting('Litefyr.Presentation.icons.blockquote')}
-                    attributes.class="fill-theme-front opacity-25 mb-6 size-12 md:size-16 -translate-x-8"
-                />
+                <div class="animation-text">
+                    <Litefyr.Presentation:Atom.Icon
+                        styleAndIcon={Configuration.setting('Litefyr.Presentation.icons.blockquote')}
+                        attributes.class="fill-theme-front opacity-25 mb-6 size-12 md:size-16 -translate-x-8"
+                    />
+                </div>
                 {props.content}
                 <footer class="mt-6 text-base font-main">
                     <p>{props.cite}</p>
                     <p class="text-theme-front opacity-80">{props.function}</p>
                 </footer>
-
             </blockquote>
             <Litefyr.Presentation:Atom.Clippath.Bottom theme={private.theme} />
         </Litefyr.Presentation:Spacing>
