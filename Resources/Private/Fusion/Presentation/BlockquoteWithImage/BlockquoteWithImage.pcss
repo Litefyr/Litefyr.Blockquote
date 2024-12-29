@@ -1,11 +1,13 @@
 .-blockquote-with-image {
+  --spacing-top: var(--content-space);
+  --spacing-bottom: var(--content-space);
+
   display: grid;
   grid-template:
     ". image ." auto
     ". image ." auto
-    ". text ." auto
-    "clip clip clip" auto /
-    minmax(var(--content-padding), 1fr) minmax(0, 28rem) minmax(var(--content-padding), 1fr);
+    ". text ." auto /
+    minmax(var(--content-padding-left), 1fr) minmax(0, 28rem) minmax(var(--content-padding-right), 1fr);
 
   @screen sm {
     grid-template-columns: minmax(var(--content-padding-wide), 1fr) minmax(0, 45rem) minmax(var(--content-padding-wide), 1fr);
@@ -13,28 +15,74 @@
 
   @screen lg {
     grid-template:
-      ". image . . ." 2rem
+      ". image . . ." var(--spacing-top)
       ". image . text ." auto
-      ". image . . ." 2rem /
-      minmax(var(--content-padding), 1fr) minmax(0, 23rem) 5rem minmax(0, 44rem) minmax(var(--content-padding), 1fr);
-
-    /* 23 + 5 + 44 = 72 == --content-max-width-wide */
-  }
-
-  & .clippath-bottom {
-    grid-area: clip;
-
-    @screen lg {
-      grid-column: 1 / -1;
-      grid-row-start: 3;
-    }
+      ". image . . ." var(--spacing-bottom) /
+      minmax(var(--content-padding-left), 1fr) minmax(0, calc(var(--content-max-width-wide) / 3)) 5rem minmax(0, calc(var(--content-max-width-wide) / 3 * 2 - 5rem)) minmax(var(--content-padding-right), 1fr);
   }
 }
 
 .-blockquote-with-image__image {
   grid-area: image;
+  z-index: 1;
+  aspect-ratio: var(--aspect-ratio);
+}
+
+.images-default .-blockquote-with-image__image {
+  --aspect-ratio: 10 / 6;
+
+  @screen sm {
+    --aspect-ratio: 16 / 7;
+  }
+
+  @screen lg {
+    --aspect-ratio: auto;
+
+    height: 100%;
+  }
+}
+
+.images-round .-blockquote-with-image__image {
+  --aspect-ratio: 1;
+
+  @screen sm {
+    --aspect-ratio: 1;
+  }
+
+  @screen lg {
+    --aspect-ratio: 1;
+
+    align-self: center;
+  }
+}
+
+.-blockquote-with-image__image[data-theme] {
+  margin-bottom: calc(var(--clippath-content-height-bottom, 0) * -1);
+
+  @screen lg {
+    height: calc(var(--height) - var(--clippath-content-height, 0));
+    margin-top: var(--clippath-content-height-top, 0);
+    margin-bottom: var(--clippath-content-height-bottom, 0);
+  }
 }
 
 .-blockquote-with-image__text {
   grid-area: text;
+  margin-top: var(--content-space);
+  margin-bottom: var(--content-space);
+}
+
+.-blockquote-with-image__text[data-theme] {
+  margin-top: max(var(--content-space-half), var(--clippath-content-height-top, 0px));
+  margin-bottom: max(var(--content-space-half), var(--clippath-content-height-bottom, 0px));
+}
+
+:where(.footer-clip.content-clip) :where(.-collection--main, .collection--bottom) > .clippath-quote:last-child {
+  margin-bottom: calc(var(--clippath-content-height-bottom, 0px) * -1);
+}
+
+@screen lg {
+  :where(.content-clip) :where(.-collection--top, .-collection--main) > .clippath-quote:first-child {
+    margin-top: calc((var(--clippath-header-height, 0px) - var(--header-height) - var(--content-space-half)) * -1);
+  }
 }

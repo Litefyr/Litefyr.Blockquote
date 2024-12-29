@@ -14,12 +14,16 @@ prototype(Litefyr.Blockquote:Content) < prototype(Neos.Neos:ContentComponent) {
     alternativeText = ${q(node).property('alternativeText')}
 
     theme = ${q(node).property('theme')}
+    forceTheme = ${q(node).property('theme')}
 
     animationText = Litefyr.Animations:Helper.Text
     animationMedia = Litefyr.Animations:Helper.Media
+    fontSize = ${q(node).property('fontSize')}
+    breakout = ${q(node).property('breakout')}
+    customRounded = ${q(node).property('rounded')}
 
     renderer = afx`
-        <Litefyr.Blockquote:Presentation.Blockquote @if={!props.image} {...props}/>
-        <Litefyr.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props}/>
+        <Litefyr.Blockquote:Presentation.Blockquote @if={!props.image} {...props} theme={props.forceTheme} />
+        <Litefyr.Blockquote:Presentation.BlockquoteWithImage @if={props.image} {...props} breakout={null} />
     `
 }

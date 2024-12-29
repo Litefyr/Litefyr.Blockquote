@@ -21,18 +21,25 @@ prototype(Litefyr.Blockquote:Presentation.Blockquote) < prototype(Neos.Fusion:Co
 
     @if.hasContent = ${this.content}
 
-    class = 'has-prose w-full prose'
+    class = 'has-prose w-full'
 
     renderer = afx`
         <Litefyr.Presentation:Spacing
             tailwind={props.class}
-            width padding waveSpacing
+            width={props.breakout}
+            padding
             animationText={props.animationText}
             data-animation-text-selector={props.animationText ? "blockquote" : null}
         >
-            <blockquote class={[Presentation.cssClass("blockquote"), "font-quote"]}>
+            <blockquote class={[Presentation.cssClass("blockquote"), Presentation.fontSize(props.fontSize), props.theme && "relative p-[1em] pr-0", "not-prose quotes text-balance"]}>
+                <span
+                    @if={props.theme}
+                    aria-hidden="true"
+                    data-theme={props.theme}
+                    class="absolute inset-y-0 left-0 w-1 bg-theme-back"
+                ></span>
                 {props.content}
-                <footer @if={props.cite || props.function} class="font-main mt-6 text-base not-prose">
+                <footer @if={props.cite || props.function} class={["font-main mt-[1em] not-prose", Presentation.fontSize(props.fontSize, -2)]}>
                     <p>
                         {props.cite}
                         <span @if={props.function} class="opacity-60 block">{props.function}</span>

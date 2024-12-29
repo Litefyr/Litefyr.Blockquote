@@ -5,6 +5,9 @@
     'Carbon.Image:Image': true
     'Litefyr.Integration:Mixin.ThemeSelector': true
     'Litefyr.Animations:Mixin.TextWithOptionalImage': true
+    'Litefyr.Integration:Mixin.LookGroup': true
+    'Litefyr.Integration:Mixin.Breakout.IfHasImage': true
+    'Litefyr.Integration:Mixin.FontSize': true
   label: "${Neos.Node.labelForNode(node).properties('cite', 'alternativeText', 'text', 'function')}"
   search:
     fulltext:
@@ -14,13 +17,23 @@
     icon: quote-left
     position: 500
   properties:
+    breakout:
+      ui:
+        inspector:
+          editorOptions:
+            values:
+              full:
+                hidden: true
     theme:
       defaultValue: 'main'
       ui:
         inspector:
-          position: end
-          group: image
-          hidden: 'ClientEval:node.properties.image ? false : true'
+          position: 20
+          group: look
+          editorOptions:
+            allowEmpty: true
+            dataSourceAdditionalData:
+              alwaysShow: 'ClientEval: !node.properties.image'
     image:
       ui:
         reloadPageIfChanged: true
@@ -30,6 +43,9 @@
           editorOptions:
             # TODO How we can handle the translation of the placeholder?
             placeholder: "ClientEval:node.properties.cite?'Bild von ' + node.properties.cite.replaceAll('<br>', ' '):''"
+    rounded:
+      options:
+        preset: 'image.rounded'
     text:
       options:
         preset: 'text.autoparagraph'
