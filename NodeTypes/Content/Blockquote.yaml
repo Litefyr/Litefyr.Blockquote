@@ -16,10 +16,13 @@
     label: i18n
     icon: quote-left
     position: 500
+    help:
+      message: i18n
   properties:
     breakout:
       ui:
         inspector:
+          hidden: 'ClientEval: !!node.properties.image'
           editorOptions:
             values:
               full:

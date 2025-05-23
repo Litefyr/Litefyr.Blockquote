@@ -6,6 +6,16 @@
                 <source>Quote</source>
                 <target>Zitat</target>
             </trans-unit>
+            <trans-unit id="ui.help.message" xml:space="preserve">
+                <source>* Quote with or without image
+* Selectable font size
+* Accent color and width selectable (for the text variant)
+* Background color selectable (for the image variant)</source>
+                <target>* Zitat mit oder ohne Bild
+* Schriftgröße wählbar
+* Akzentfarbe und Breite wählbar (bei der Text-Variante)
+* Hintergrundfarbe wählbar (bei der Bild-Variante)</target>
+            </trans-unit>
             <trans-unit id="properties.cite.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Author</source>
                 <target>Autor</target>

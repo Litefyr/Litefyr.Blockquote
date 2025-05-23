@@ -5,6 +5,12 @@
             <trans-unit id="ui.label" xml:space="preserve">
                 <source>Quote</source>
             </trans-unit>
+            <trans-unit id="ui.help.message" xml:space="preserve">
+                <source>* Quote with or without image
+* Selectable font size
+* Accent color and width selectable (for the text variant)
+* Background color selectable (for the image variant)</source>
+            </trans-unit>
             <trans-unit id="properties.cite.ui.inline.editorOptions.placeholder" xml:space="preserve">
                 <source>Author</source>
             </trans-unit>
